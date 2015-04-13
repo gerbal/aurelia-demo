@@ -1,83 +1,66 @@
-import {computedFrom} from 'aurelia-framework';
+import {
+    computedFrom
+}
+from 'aurelia-framework';
 
 
-export class App{
-// constructor(){
+export class App {
 
-  heading = 'Welcome to the Aurelia Navigation App!';
+    //This implemenation of ES6 doesn't use Contructor (why?)
 
-  titleStr = 'Mark Ronson feat. Bruno Mars - Uptown Funk (Radio Edit)';
-  //left = this.titleStr.split('-')[0];
-  firstName = 'John';
-  lastName = 'Doe';
-  artist = ""
-  title = ""
-  feat = ""
-  remix = ""
-// }
+    // constructor(){
+    //   sliceParens();
+    // }
+    heading = 'Welcome to the Aurelia Navigation App!';
 
-  //Getters can't be observed with Object.observe, so they must be dirty checked.
-  //However, if you tell Aurelia the dependencies, it no longer needs to dirty check the property.
-  //To optimize by declaring the properties that this getter is computed from, uncomment the line below.
-  //@computedFrom('firstName', 'lastName')
+    titleStr = 'Mark Ronson feat. Bruno Mars - Uptown Funk (Radio Edit)';
 
+    brackeMatch = /\[([edit|remix|feat]?[^\]]+[edit|remix|feat]?)\]|\(([edit|remix|feat]?[^)]+[edit|remix|feat]?)\)/gi;
+    editMatch = /\[([edit|remix]?[^\]]+[edit|remix]?)\]|\(([edit|remix]?[^)]+[edit|remix]?)\)/gi;
 
-  // @computedFrom('titleStr')
-
-  get Artist(){
-    return this.artist
-  }
-
-  get Title(){
-    return this.title
-  }
-
-  get Feat(){
-    return this.feat
-  }
-
-  get Remix(){
-    return this.remix
-  }
+    firstName = 'John';
+    lastName = 'Doe';
+    left = this.titleStr.split('-')[0];
+    right = this.titleStr.split('-')[1];
+    artist = this.left.replace(this.brackeMatch, "")
+    title = this.right.replace(this.brackeMatch, "")
+    feat = this.titleStr.match(/feat.+[-$]/gi)
+    remix = this.right.match(this.editMatch);
 
 
-  Right(){
-    let right = this.titleStr.split('-')[1];
-    return right;
-  }
+    @
+    computedFrom('artist')
+    get Artist() {
+        return this.artist.replace(/feat.*/gi, "")
+    }
 
-  // @computedFrom('titleStr')
-  Left(){
-    let left = this.titleStr.split('-')[0];
-    return left;
-  }
+    @
+    computedFrom('title')
+    get Title() {
+        return this.title
+    }
 
-  get featBit(){
+    @
+    computedFrom('feat')
+    get Feat() {
+        console.log(this.feat)
+        return this.feat.map(d => d.replace(/feat.+?\s/i, '').replace('-', ""))
+    }
 
-  }
-
-  welcome(){
-    alert(`Welcome, ${this.heading}!`);
-  }
+    @
+    computedFrom('remix')
+    get Remix() {
+        // console.log(this.remix)
+        return this.remix.map(d => d.replace(/[\[\]\(\)]/g, ""));
+    }
 
 
 
-  get sliceParens(){
-    let splits = this.titleStr.split(/[()\[\]]+/);
-    //let parensMatch = /\(([edit|remix|feat]?[^)]+)\)/gi;
-    let brackeMatch = /[\[([edit|remix|feat]?[^\]]+)\]|\(([edit|remix|feat]?[^)]+)\)]/gi;
-    let segments = this.titleStr.match(brackeMatch)
-    let right = this.Right();
-    let left = this.Left();
-    // segments = segments.concat(this.titleStr.match(brackeMatch));
-    segments = segments.concat(right.replace(brackeMatch,""), left.replace(brackeMatch,""));
-    console.log(segments, left, right);
-    return segments
-  }
+
 
 }
 export class UpperValueConverter {
-  toView(value){
-    return value && value.toUpperCase();
-  }
+    toView(value) {
+        return value && value.toUpperCase();
+    }
 }

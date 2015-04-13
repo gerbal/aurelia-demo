@@ -1,17 +1,17 @@
 import {App} from '../../src/app';
 
-class RouterStub {
-  configure(handler) {
-    handler(this);
-  }
-  map(routes) {
-    this.routes = routes;
-  }
-}
+// class RouterStub {
+//   configure(handler) {
+//     handler(this);
+//   }
+//   map(routes) {
+//     this.routes = routes;
+//   }
+// }
 
-describe('the App module', () => {
-  var sut;
-  beforeEach(() => { sut = new App(new RouterStub()); });
+describe('the Song Parser', () => {
+  // var sut;
+  // beforeEach(() => { sut = new App(new RouterStub()); });
 
   it('contains a router property', () => {
     expect(sut.router).toBeDefined();
