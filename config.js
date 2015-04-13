@@ -9,6 +9,7 @@ System.config({
 
 System.config({
   "map": {
+    "Polymer/polymer": "github:Polymer/polymer@0.8.0",
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.11.0",
     "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.6.0",
     "aurelia-framework": "github:aurelia/framework@0.10.0",
