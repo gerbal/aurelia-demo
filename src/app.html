@@ -1,35 +1,53 @@
 <template>
-<div class="container">
-  <section>
-    <h2>${heading}</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card-panel grey lighten-5 z-depth-2">
+                    <div class="card-content">
+                        <section>
+                            <span class="card-title">Song String Parser</span>
 
-  </section>
-  <form role="form" submit.delegate="app()">
-  <div class="form-group">
-      <label for="fullStr">Song String</label>
-      <input type="text" value.bind="titleStr"  class="form-control" id="fullStr">
-  </div>
-  <div>
-    <!-- <p>
-        ${sliceParens}
-    </p> -->
-    <p>
-    <b>Title</b>
-      ${Title}
-    </p>
-    <p>
-    <b>Artist</b>
-      ${Artist}
-    </p>
-    <p><b>Feat</b>
-        ${Feat}
-    </p>
-    <p>
-    <b>remix</b>
-    ${Remix}
-    </p>
+                        </section>
+                        <form role="form" submit.delegate="app()">
+                            <div class="form-group">
+
+                                <label for="fullStr" class=" blue-text text-darken-2">Song String</label>
+                                <input type="text" value.bind="titleStr" class="form-control" id="fullStr">
+                            </div>
+                            <div>
+                                <ul class="collection">
+
+                                    <li class="collection-item">
+                                        <div class="title  text-darken-2">Title</div>
+
+                                        ${Title}
+
+                                    </li>
+                                    <li class="collection-item">
+                                        <div class="title  text-darken-2">Artist</div>
+
+                                        ${Artist}
+
+                                    </li>
+                                    <li class="collection-item">
+                                        <div class="title  text-darken-2">Featuring</div>
+
+                                        ${Feat}
+
+                                    </li>
+                                    <li class="collection-item">
+                                        <div class="title  text-darken-2">Remix/Edit</div>
+
+                                        ${Remix}
+
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-   <!-- <button type="submit" class="btn btn-default">Submit</button> -->
-  </form>
-  </div>
 </template>
