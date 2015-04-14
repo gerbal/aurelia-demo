@@ -1,13 +1,12 @@
-import {PageObject_Welcome} from './welcome.po.js';
+import {PageObject_App} from './app.po.js';
 import {PageObject_Skeleton} from './skeleton.po.js';
 
 describe('aurelia skeleton app', function() {
-  var po_welcome,
-      po_skeleton;
+  var po_skeleton;
 
   beforeEach( () => {
     po_skeleton = new PageObject_Skeleton();
-    po_welcome = new PageObject_Welcome();
+    po_app = new PageObject_App();
 
     browser.loadAndWaitForAureliaPage("http://localhost:9000");
   });
@@ -28,14 +27,5 @@ describe('aurelia skeleton app', function() {
     // Until resolved we will use a short sleep to overcome the issue.
     browser.sleep(200);
     expect(po_welcome.getFullname()).toBe('ROB EISENBERG');
-  });
-
-  it('should show alert message when clicking submit button', () => {
-    expect(po_welcome.openAlertDialog()).toBe(true);
-  });
-
-  it('should navigate to flickr page', () => {
-    po_skeleton.navigateTo('#/flickr');
-    expect(po_skeleton.getCurrentPageTitle()).toBe('Flickr | Aurelia');
   });
 });

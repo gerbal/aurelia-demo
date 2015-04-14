@@ -1,64 +1,74 @@
-import {computedFrom} from 'aurelia-framework';
+import {
+    computedFrom
+}
+from 'aurelia-framework';
 
 
 
 export class App {
 
-    //This implementation of ES6 doesn't use Constructor (why?)
+    //This implementation of ES6 doesn't use Constructors (why?)
 
     titleStr = 'Mark Ronson feat. Bruno Mars - Uptown Funk (Radio Edit)';
 
-    brackeMatch = /\[([edit|remix|feat]?[^\]]+[edit|remix|feat]?)\]|\(([edit|remix|feat]?[^)]+[edit|remix|feat]?)\)/gi;
-    editMatch = /\[([edit|remix]?[^\]]+[edit|remix]?)\]|\(([edit|remix]?[^)]+[edit|remix]?)\)/gi;
-
-    // firstName = 'John';
-    // lastName = 'Doe';
-    // left = this.titleStr.split('-')[0];
-    // right = this.titleStr.split('-')[1];
-    // artist = this.left.replace(this.brackeMatch, "")
-    // title = this.right.replace(this.brackeMatch, "")
-    // feat = this.titleStr.match(/feat.+[-$]/gi)
-    // remix = this.right.match(this.editMatch);
+    brackeMatch = /\[((edit|remix|feat)?[^\]]+(edit|remix|feat)?)\]|\(((edit|remix|feat)?[^)]+(edit|remix|feat)?)\)/gi;
+    editMatch = /\[((edit|remix)?[^\]]+(edit|remix)?)\]|\(((edit|remix)?[^)]+(edit|remix)?)\)/gi;
+    featMatch = /\[((feat)?[^\]]+(feat)?)\]|\(((feat)?[^)]+(feat)?)\)|(feat.+[-$])/gi;
 
 
-//    @computedFrom('artist')
-// Computed From works for a static element or generation, but not for dynamic values
     get Artist() {
-        let artist = this.left().replace(this.brackeMatch, "");
-        return artist.replace(/feat.*/gi, "");
+
+        let left = this.left();
+        let artist = left.replace(this.brackeMatch, ""); //remove parens & braces, may be overzealous
+        return artist.replace(/feat.*/gi, "").trim(); //remove feat. in artist
+
     }
 
-//    @computedFrom('title')
     get Title() {
-        return this.right().replace(this.brackeMatch, "");
+        let right = this.right();
+        return right.replace(this.brackeMatch, "").trim();
     }
 
-//    @computedFrom('feat')
     get Feat() {
-        let feat = this.titleStr.match(/feat.+[-$]/gi);
-        console.log(feat)
-        return feat.map(d => d.replace(/feat.+?\s/i, '').replace('-', ""));
+        let feat = this.titleStr.match(this.featMatch);
+        if (feat != null) {
+            let ret_feat = " "
+            feat.map(d => d.match(/feat.+?\s/i) ? ret_feat = d.replace(/[\[\]\(\)]/g, "") : " ")
+            return ret_feat.replace(/feat.+?\s/i, '').replace('-', "").trim();
+        }
     }
 
-//    @computedFrom('remix')
     get Remix() {
-        // console.log(this.remix)
         let remix = this.titleStr.match(this.editMatch);
-        return remix.map(d => d.replace(/[\[\]\(\)]/g, ""));
+        if (remix != null) {
+            let ret_remix = " "
+            remix.map(d => d.match(/^.*(edit|remix).*$/gi) ? ret_remix = d.replace(/[\[\]\(\)]/g, "") : ' ');
+            return ret_remix.trim();
+        }
     }
 
     left() {
-        return this.titleStr.split('-')[0];
+        if (this.titleStr.indexOf('-') >= 0) {
+            return this.titleStr.split('-')[0];
+        } else {
+            return " " // Passing a string to avoid exceptions
+        }
+
     }
 
     right() {
-        return this.titleStr.split('-')[1];
+        if (this.titleStr.indexOf('-') >= 0) {
+            return this.titleStr.split('-')[1];
+        } else {
+            return " "
+        }
+
     }
 
 
 }
-export class UpperValueConverter {
-    toView(value) {
-        return value && value.toUpperCase();
-    }
-}
+// export class UpperValueConverter {
+//     toView(value) {
+//         return value && value.toUpperCase();
+//     }
+// }
