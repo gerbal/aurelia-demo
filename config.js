@@ -9,7 +9,6 @@ System.config({
 
 System.config({
   "map": {
-    "Polymer/polymer": "github:Polymer/polymer@0.8.0",
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.11.0",
     "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.6.0",
     "aurelia-framework": "github:aurelia/framework@0.10.0",
@@ -18,8 +17,10 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.4",
     "css": "github:systemjs/plugin-css@0.1.9",
     "font-awesome": "npm:font-awesome@4.3.0",
+    "jquery": "github:components/jquery@2.1.3",
     "traceur": "github:jmcriffey/bower-traceur@0.0.87",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.87",
+    "webcomponents/webcomponentsjs": "github:webcomponents/webcomponentsjs@0.6.1",
     "github:aurelia/binding@0.5.0": {
       "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.6.0",
       "aurelia-metadata": "github:aurelia/metadata@0.4.0",

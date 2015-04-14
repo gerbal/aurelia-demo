@@ -1,7 +1,4 @@
-import {
-    computedFrom
-}
-from 'aurelia-framework';
+import {computedFrom} from 'aurelia-framework';
 
 
 export class App {
@@ -11,51 +8,55 @@ export class App {
     // constructor(){
     //   sliceParens();
     // }
-    heading = 'Welcome to the Aurelia Navigation App!';
+    // heading = 'Welcome to the Aurelia Navigation App!';
 
     titleStr = 'Mark Ronson feat. Bruno Mars - Uptown Funk (Radio Edit)';
 
     brackeMatch = /\[([edit|remix|feat]?[^\]]+[edit|remix|feat]?)\]|\(([edit|remix|feat]?[^)]+[edit|remix|feat]?)\)/gi;
     editMatch = /\[([edit|remix]?[^\]]+[edit|remix]?)\]|\(([edit|remix]?[^)]+[edit|remix]?)\)/gi;
 
-    firstName = 'John';
-    lastName = 'Doe';
-    left = this.titleStr.split('-')[0];
-    right = this.titleStr.split('-')[1];
-    artist = this.left.replace(this.brackeMatch, "")
-    title = this.right.replace(this.brackeMatch, "")
-    feat = this.titleStr.match(/feat.+[-$]/gi)
-    remix = this.right.match(this.editMatch);
+    // firstName = 'John';
+    // lastName = 'Doe';
+    // left = this.titleStr.split('-')[0];
+    // right = this.titleStr.split('-')[1];
+    // artist = this.left.replace(this.brackeMatch, "")
+    // title = this.right.replace(this.brackeMatch, "")
+    // feat = this.titleStr.match(/feat.+[-$]/gi)
+    // remix = this.right.match(this.editMatch);
 
 
-    @
-    computedFrom('artist')
+    // @computedFrom('artist')
     get Artist() {
-        return this.artist.replace(/feat.*/gi, "")
+        let artist = this.left().replace(this.brackeMatch, "");
+        return artist.replace(/feat.*/gi, "");
     }
 
-    @
-    computedFrom('title')
+    // @computedFrom('title')
     get Title() {
-        return this.title
+        return this.right().replace(this.brackeMatch, "");
     }
 
-    @
-    computedFrom('feat')
+    // @computedFrom('feat')
     get Feat() {
-        console.log(this.feat)
-        return this.feat.map(d => d.replace(/feat.+?\s/i, '').replace('-', ""))
+        let feat = this.titleStr.match(/feat.+[-$]/gi);
+        console.log(feat)
+        return feat.map(d => d.replace(/feat.+?\s/i, '').replace('-', ""));
     }
 
-    @
-    computedFrom('remix')
+    // @computedFrom('remix')
     get Remix() {
         // console.log(this.remix)
-        return this.remix.map(d => d.replace(/[\[\]\(\)]/g, ""));
+        let remix = this.titleStr.match(this.editMatch);
+        return remix.map(d => d.replace(/[\[\]\(\)]/g, ""));
     }
 
+    left(){
+      return this.titleStr.split('-')[0];
+    }
 
-
+    right(){
+      return this.titleStr.split('-')[1];
+    }
 
 
 }

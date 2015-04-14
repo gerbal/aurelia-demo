@@ -1,6 +1,3 @@
-body {
-  margin: 0;
-}
 
 .splash {
     text-align: center;
@@ -23,24 +20,69 @@ body {
     margin-top: 50px;
 }
 
-.page-host {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50px;
-    bottom: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
+ body {
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+      font-size: 14px;
+      margin: 0;
+      padding: 24px;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-touch-callout: none;
+    }
 
-section {
-    margin: 0 20px;
-}
+    section {
+      padding: 20px 0;
+    }
 
-.navbar-nav li.loader {
-    margin: 12px 24px 0 6px;
-}
+    section > div {
+      padding: 14px;
+      font-size: 16px;
+    }
 
-.pictureDetail {
-    max-width: 425px;
-}
+    .card {
+      display: inline-block;
+      background: white;
+      box-sizing: border-box;
+      width: 100px;
+      height: 100px;
+      margin: 16px;
+      padding: 16px;
+      border-radius: 2px;
+    }
+
+    .fab {
+      display: inline-block;
+      background: white;
+      box-sizing: border-box;
+      width: 56px;
+      height: 56px;
+      margin: 16px;
+      padding: 16px;
+      border-radius: 50%;
+      text-align: center;
+    }
+
+
+    paper-input {
+      width: 80%;
+    }
+
+
+    paper-input-decorator {
+        /*width: 100%;*/
+      max-width: 80%;
+    }
+
+    @media only screen and (min-width : 320px) {
+      paper-input {
+        width: 100%;
+      }
+
+      paper-input-decorator {
+        max-width: 100%;
+      }
+    }
+
+    paper-input.narrow {
+      width: 150px;
+    }
+
