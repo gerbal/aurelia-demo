@@ -1,22 +1,21 @@
 {
-  "name": "aurelia-skeleton-navigation",
-  "version": "0.12.0",
-  "description": "A starter kit for building a standard navigation-style app with Aurelia.",
+  "name": "Aurelia-Demo",
+  "version": "0.1.0",
+  "description": "A simple example Aurelia ap",
   "keywords": [
     "aurelia",
-    "navigation",
-    "skeleton"
+    "demo"
   ],
   "homepage": "http://aurelia.io",
   "bugs": {
-    "url": "https://github.com/aurelia/skeleton-navigation/issues"
+    "url": "https://github.com/gerbal/aurelia-demo/issues"
   },
   "license": "MIT",
-  "author": "Rob Eisenberg <rob@bluespire.com> (http://robeisenberg.com/)",
+  "author": "Grant McLendon (gerbal@gerbal.org) <grantmclendon.com>",
   "main": "dist/commonjs/index.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/aurelia/skeleton-navigation"
+    "url": "https://github.com/gerbal/aurelia-demo/"
   },
   "devDependencies": {
     "aurelia-tools": "^0.1.3",
