@@ -9,7 +9,7 @@ export class PageObject_App {
     }
 
     getATitle() {
-        console.log(element(by.css('.sTitle')).getText());
+//        console.log(element(by.css('.sTitle')).getText());
         return element(by.css('.sTitle')).getText();
     };
     getArtist() {

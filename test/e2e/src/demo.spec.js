@@ -79,10 +79,11 @@ describe('Song Parser app', function () {
 
     for (let x =0; x < song_strings.length; x++) {
         it('should parse song strings properly', () => {
-            console.log(x);
-            po_app.setSongString(x.string);
-            browser.sleep(200);
+//            console.log(x);
             let dict = song_strings[x];
+            po_app.setSongString(dict.string);
+            browser.sleep(200);
+            
             expect(po_app.getATitle()).toEqual(dict.Title);
             expect(po_app.getArtist()).toEqual(dict.Artist);
             expect(po_app.getFeat()).toEqual(dict.Feat);
