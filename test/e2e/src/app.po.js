@@ -5,10 +5,11 @@ export class PageObject_App {
     }
 
     setSongString(value) {
-        return element(by.valueBind('titleStr')).clear().sendKeys(value)
+        return element(by.valueBind('titleStr')).clear().sendKeys(value);
     }
 
     getATitle() {
+        console.log(element(by.css('.sTitle')).getText());
         return element(by.css('.sTitle')).getText();
     };
     getArtist() {

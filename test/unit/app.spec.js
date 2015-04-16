@@ -27,22 +27,22 @@ let song_strings = [
     string: "Red Mystery - Jetlands (Ron Flatter & Nick D-Lite Edit)",
     Artist: "Red Mystery",
     Title: "Jetlands",
-    Feat: '',
+    Feat: "",
     Remix: "Ron Flatter & Nick D-Lite Edit"
   },
   {
     string: "Bill Withers & Grover Washington - Just the Two of Us",
     Artist: "Bill Withers & Grover Washington",
     Title: "Just the Two of Us",
-    Feat: '',
-    Remix: ''
+    Feat: "",
+    Remix: ""
   },
    {
     string: "M. Ward - Me and My Shadow (feat. Zooey Deschanel)",
     Artist: "M. Ward",
     Title: "Me and My Shadow",
     Feat: "Zooey Deschanel",
-    Remix: ''
+    Remix: ""
   },
   {
     string: "Clean Bandit - Rather Be (feat. Jess Glynne) [The Magician Remix]",
